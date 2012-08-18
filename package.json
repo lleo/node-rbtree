@@ -1,0 +1,25 @@
+{
+  "name"        : "rbtree"
+, "version"     : "0.1.0"
+, "description" : "An implementation of a Red-Black Tree for node.js"
+, "keywords"    : ["datastructure", "tree", "red-black", "red-black tree"]
+, "repository"  : { "type": "git"
+                  , "url": "https://github.com/lleo/node-rbtree" }
+, "bugs"        : { "url": "https://github.com/lleo/node-frap/issues"
+                  , "email": "lleoem@gmail.com" }
+, "author"      : { "name": "LLeo"
+                  , "email": "lleoem@gmail.com"
+                  , "url": "http://lleo-blog.blogspot.com/" }
+, "files"       : [ "README.md"
+                  , "package.json"
+                  , "Makefile"
+                  , "lib/*"
+                  , "test/*"
+                  ]
+, "main"        : "lib/rbtree.js"
+, "scripts"     : { "test": "make test" }
+, "dependencies": { }
+, "devDependencies": { "mocha": "1.3.x"
+                     , "chai": "1.1.x" }
+, "engines"     : {"node" : ">=0.4.0"}
+}
