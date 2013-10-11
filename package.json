@@ -19,7 +19,6 @@
 , "main"        : "lib/rbtree.js"
 , "scripts"     : { "test": "make test" }
 , "dependencies": { }
-, "devDependencies": { "mocha": "1.3.x"
-                     , "chai": "1.1.x" }
+, "devDependencies": { }
 , "engines"     : {"node" : ">=0.4.0"}
 }
