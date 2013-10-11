@@ -1,6 +1,6 @@
 {
   "name"        : "rbtree"
-, "version"     : "0.1.0"
+, "version"     : "0.1.1"
 , "description" : "An implementation of a Red-Black Tree for node.js"
 , "keywords"    : ["datastructure", "tree", "red-black", "red-black tree"]
 , "repository"  : { "type": "git"
