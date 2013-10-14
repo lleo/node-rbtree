@@ -34,9 +34,18 @@
 
 ## RBTree Criteria
 
-1) All nodes are either RED or BLACK
-2) The root node is BLACK
-3) All leaves (nulls) are considered BLACK
-4) Both children of RED nodes must be BLACK
-5) Every path from a node to the leaves (inclusive) have the same number of
+1. All nodes are either RED or BLACK
+2. The root node is BLACK
+3. All leaves (nulls) are considered BLACK
+4. Both children of RED nodes must be BLACK
+5. Every path from a node to the leaves (inclusive) have the same number of
    BLACK nodes.
+
+## Running Tests and Test-coverage
+
+To run tests: `npm test`
+
+To run test coverage:
+
+    npm run-script test-cov
+    open jscov.html
