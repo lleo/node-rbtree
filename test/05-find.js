@@ -5,7 +5,6 @@ var fs = require('fs')
   , RBTree = require('..')
   , format = require('util').format
   , f = format
-  , utils = require('../lib/utils')
 
 var random_data_fn = "./test/rand-1024.dat.json"
   , random_data = JSON.parse( fs.readFileSync(random_data_fn) )
@@ -18,8 +17,8 @@ var random_data_fn = "./test/rand-1024.dat.json"
       throw new Error("WTF! strCmp")
     }
   , inorder_data = random_data.slice()
-
-inorder_data.sort(function(a,b){ return strCmp(a.key, b.key) })
+                   .slice()
+                   .sort(function(a,b){ return strCmp(a.key, b.key) })
 
 describe("find* family", function(){
   var tree
@@ -66,9 +65,9 @@ describe("find* family", function(){
   })
 
   // findLeastGT at end
-  it('_findLeastGT last key="zy" expect undefined', function(){
+  it('_findLeastGT last key="zy" expect node == null', function(){
     var node = tree._findLeastGT("zy")
-    assert.equal( typeof node, 'undefined'
+    assert.equal( node, null
                 , format('expected node==undefined got node=="%j"', node) )
   })
 
@@ -94,8 +93,7 @@ describe("find* family", function(){
   it('_findLeastGE missing last key="zz" expected result=undefined', function(){
     var node = tree._findLeastGE("zz")
     assert.ok( typeof node == 'undefined'
-             , format('expected typeof node=="%s" got node=="%j"'
-                     , 'undefined', node) )
+             , node && format('expected node == undefined got node.key=="%s"', node.key) )
   })
 
   // findGreatestLT regular
@@ -118,14 +116,41 @@ describe("find* family", function(){
 
   })
 
+  // findGreatestLT beyond beginning
+  it('_findGreatestLT "aa" expect node == null"', function(){
+    var node = tree._findGreatestLT("aa")
+    assert.ok( node == null
+             , node && format('expected node == null got node.key=="%s"'
+                             , node.key) )
+  })
 
-  // findGreaterLT undefined
+  // findGreatestLE regular
+  it('_findGreatestLE "hb" expect node.key="hb"', function(){
+    var node = tree._findGreatestLE("hb")
+      , expected = "hb"
+    assert.equal( node.key, expected
+                , node && format('expected node.key=="%s" got node.key=="%s"'
+                                , expected, node.key) )
 
-  // findGreaterLE regular
+  })
 
-  // findGreaterLE over hole
+  // findGreatestLE over hole
+  it('_findGreatestLE "ha" expect node.key="h"', function(){
+    var node = tree._findGreatestLE("ha")
+      , expected = "h"
+    assert.equal( node.key, expected
+                , node && format('expected node.key=="%s" got node.key=="%s"'
+                                , expected, node.key) )
 
-  // findGreaterLE undefined
+  })
+
+  // findGreatestLE beyond beginning
+  it('_findGreatestLE "a" expect node == undefined', function(){
+    var node = tree._findGreatestLE("a")
+    assert.ok( typeof node == 'undefined'
+             , node && format('expected node == undefined got node.key="%s"', node.key) )
+  })
+
 
   // findNext regular
   it('_findNext( _find("gz") ) expect node.key="h"', function(){
@@ -142,13 +167,11 @@ describe("find* family", function(){
   })
 
   // findNext last => undefined
-  it('_findNext( last ) expect node == undefined', function(){
-    var last_key = inorder_data[inorder_data.length-2].key
-    utils.err("last_key=%s", last_key)
-    var last = tree._find(last_key)
+  it('_findNext( _find("zy") ) expect node == undefined', function(){
+    var last = tree._find("zy")
       , next = tree._findNext(last)
 
-    assert.ok(!next)
+    assert.ok(!next, next && format("next.key = %s,", next.key))
   })
 
   // findPrev regular
@@ -166,8 +189,8 @@ describe("find* family", function(){
   })
 
   // findPrev undefined
-  it('_findPrev( first ) expect node == undefined', function(){
-    var first = tree._find('aa')
+  it('_findPrev( _find("aa") ) expect node == undefined', function(){
+    var first = tree._find("aa")
       , prev = tree._findPrev(first)
 
     assert.ok(!prev)
