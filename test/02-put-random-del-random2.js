@@ -4,8 +4,8 @@ var fs = require('fs')
   , assert = require('assert')
   , RBTree = require('..')
 
-var random_data_fn = "./test/rand-1000.dat.json"
-  , random2_data_fn = "./test/rand2-1000.dat.json"
+var random_data_fn = "./test/rand-1024.dat.json"
+  , random2_data_fn = "./test/rand2-1024.dat.json"
   , random_data = JSON.parse( fs.readFileSync(random_data_fn) )
   , random_data2 = JSON.parse( fs.readFileSync(random2_data_fn) )
   , strCmp = function(a,b){

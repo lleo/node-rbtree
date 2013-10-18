@@ -4,7 +4,7 @@ var fs = require('fs')
   , assert = require('assert')
   , RBTree = require('..')
 
-var inorder_data_fn = "./test/inorder-1000.dat.json"
+var inorder_data_fn = "./test/inorder-1024.dat.json"
   , inorder_data = JSON.parse( fs.readFileSync(inorder_data_fn) )
 
 function strCmp(a,b){
