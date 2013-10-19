@@ -92,6 +92,6 @@ else if (order == "reverse") {
 else if (order == "random")
   randomize(data) //based on inc() order
 
-var output = JSON.stringify(data)
+var output = JSON.stringify(data, null, " ")
 
 console.log(output)

@@ -4,8 +4,7 @@ var fs = require('fs')
   , assert = require('assert')
   , RBTree = require('..')
 
-var test_data_fn = "./test/inorder-1000.dat.json"
-  , random_data_fn = "./test/rand-1000.dat.json"
+var random_data_fn = "./test/rand-1024.dat.json"
   , random_data = JSON.parse( fs.readFileSync(random_data_fn) )
   , inorder_data = random_data.slice() //shallow copy
   , strCmp = function(a,b){

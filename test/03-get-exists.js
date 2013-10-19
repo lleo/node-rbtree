@@ -4,7 +4,7 @@ var fs = require('fs')
   , assert = require('assert')
   , RBTree = require('..')
 
-var random_data_fn = "./test/rand-1000.dat.json"
+var random_data_fn = "./test/rand-1024.dat.json"
   , random_data = JSON.parse( fs.readFileSync(random_data_fn) )
   , strCmp = function(a,b){
       assert.ok(typeof a == 'string')
