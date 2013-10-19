@@ -37,6 +37,22 @@ describe("find* family", function(){
     assert.ok( tree.del("zz") ) //last key
   })
 
+  it('_findLeast expect "aa"', function(){
+    var node = tree._findLeast()
+      , expected = "aa"
+    assert.equal( node.key, expected
+                , format('expected node.key=="%s" got node.key=="%s"'
+                        , expected, node.key) )
+  })
+
+  it('_findGreatest expect "zy"', function(){
+    var node = tree._findGreatest()
+      , expected = "zy"
+    assert.equal( node.key, expected
+                , format('expected node.key=="%s" got node.key=="%s"'
+                        , expected, node.key) )
+  })
+
   // findLeastGT regular
   it('_findLeastGT "gz" expect "h"', function(){
     var node = tree._findLeastGT("gz")
