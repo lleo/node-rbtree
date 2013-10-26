@@ -1,0 +1,9 @@
+{ "asi"          : true
+, "laxcomma"     : true
+, "laxbreak"     : true
+, "indent"       : 2
+, "node"         : true
+, "camelcase"    : true
+, "plusplus"     : true
+, "globalstrict" : true
+}
